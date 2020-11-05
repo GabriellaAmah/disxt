@@ -1,0 +1,6 @@
+node_modules
+data
+.eslint.yml
+.prettierc
+jest-config.js
+__test__

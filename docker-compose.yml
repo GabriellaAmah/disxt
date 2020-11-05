@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    image: api
+    expose:
+      - 4000
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    env_file: .env
+    environment:
+      - DB_URL_LOCAL=$DB_URL_LOCAL
+      - NODE_ENV=development
+    image: mongo
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    volumes:
+      - './data:/data/db'
+    restart: always
