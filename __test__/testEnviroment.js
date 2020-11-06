@@ -1,23 +1,46 @@
+// const NodeEnvironment = require('jest-environment-node')
+
+// const path = require('path')
+
+// const fs = require('fs')
+
+// const globalConfigPath = path.join(__dirname, 'globalConfigMongo.json')
+
+// class MongoEnvironment extends NodeEnvironment {
+//   constructor(config) {
+//     super(config)
+//   }
+
+//   async setup() {
+//     const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'))
+
+//     this.global.__MONGO_URI__ = globalConfig.mongoUri
+//     this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName
+
+//     await super.setup()
+//   }
+
+//   async teardown() {
+//     await super.teardown()
+//   }
+
+//   runScript(script) {
+//     return super.runScript(script)
+//   }
+// }
+
+// module.exports = MongoEnvironment
+
 const NodeEnvironment = require('jest-environment-node')
 
-const path = require('path')
+const MemoryDatabaseServer = require('../src/lib/MemoryDatabase')
 
-const fs = require('fs')
-
-const globalConfigPath = path.join(__dirname, 'globalConfigMongo.json')
-
-class MongoEnvironment extends NodeEnvironment {
-  constructor(config) {
-    super(config)
-  }
-
+class CustomEnvironment extends NodeEnvironment {
   async setup() {
-    const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'))
-
-    this.global.__MONGO_URI__ = globalConfig.mongoUri
-    this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName
-
     await super.setup()
+
+    this.global.__MONGO_URI__ = await MemoryDatabaseServer.getConnectionString()
+    this.global.__MONGO_DB_NAME__ = await MemoryDatabaseServer.getDb()
   }
 
   async teardown() {
@@ -29,4 +52,4 @@ class MongoEnvironment extends NodeEnvironment {
   }
 }
 
-module.exports = MongoEnvironment
+module.exports = CustomEnvironment

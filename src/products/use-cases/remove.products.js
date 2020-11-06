@@ -5,7 +5,6 @@ const makeRemoveProduct = ({ productDb }) => {
     productId = requiredParam('Product id')
   }) {
     const exists = await productDb.findById({ productId })
-    console.log({ exists })
     if (!exists) {
       return deleteNothing()
     }

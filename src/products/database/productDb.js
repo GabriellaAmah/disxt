@@ -1,5 +1,3 @@
-import { async } from 'regenerator-runtime'
-
 const makeProductDb = ({ makeDb }) => {
   async function insert({ ...details }) {
     const db = await makeDb()
@@ -40,10 +38,8 @@ const makeProductDb = ({ makeDb }) => {
   }
 
   async function remove({ id: _id }) {
-    console.log(typeof _id)
     const db = await makeDb()
     const result = await db.collection('products').deleteOne({ _id })
-    console.log(result.deletedCount)
     return result.deletedCount
   }
 

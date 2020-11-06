@@ -13,7 +13,6 @@ const makeEditProduct = ({ productDb }) => {
     }
 
     const editedProduct = makeProduct({ ...exists, ...changes })
-    console.log({ editedProduct })
     const updated = await productDb.update({
       id: productId,
       name: editedProduct.getName(),

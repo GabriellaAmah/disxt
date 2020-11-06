@@ -1,8 +1,7 @@
-import { MongoClient, ObjectID, ObjectId } from 'mongodb'
+import { MongoClient, ObjectID } from 'mongodb'
 require('dotenv').config()
 
 const url = process.env.DB_URL_LOCAL
-console.log({ url })
 
 const client = new MongoClient(url, {
   useNewUrlParser: true,
@@ -26,6 +25,8 @@ function transformId(id) {
   console.log('Starting up---')
   const db = await makeDb()
   const user = await db.collection('users').createIndex({ _id: 1 })
+  const product = await db.collection('products').createIndex({ _id: 1 })
   console.log(user)
+  console.log(product)
   console.log('Done')
 })()

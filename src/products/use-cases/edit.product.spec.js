@@ -12,7 +12,7 @@ describe('Edit product', () => {
 
   it('must include an id', async () => {
     const editProduct = makeEditProduct({ productDb })
-    const product = makeFakeProduct({ id: undefined })
+    const product = makeFakeProduct({ productId: undefined })
     expect(editProduct(product)).rejects.toThrow(
       'Product id cannot be null or undefined'
     )
@@ -21,9 +21,9 @@ describe('Edit product', () => {
   it('modifies a field', async () => {
     const editProduct = makeEditProduct({ productDb })
     const product = makeFakeProduct()
-    await productDb.insert(product)
+    const inserted = await productDb.insert(product)
     const edited = await editProduct({
-      id: product.id,
+      productId: inserted.id,
       name: 'my-business-store'
     })
     expect(edited.name).toBe('my-business-store')

@@ -11,7 +11,7 @@ const makePostProduct = ({ addProduct }) => {
       status: true,
       statusCode: 201,
       data: [user],
-      message: 'User created'
+      message: 'Product created'
     })
   })
 }

@@ -3,7 +3,7 @@ import requiredParam from '../../utils/requiredParam'
 
 const buildMakeProduct = ({ Id }) => {
   return function makeUser({
-    name = requiredParam('Name'),
+    name = requiredParam('Product name'),
     description = requiredParam('Description'),
     createdBy = Id.makeId(),
     price = requiredParam('Price')

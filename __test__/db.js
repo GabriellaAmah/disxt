@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 
 let connection, db
 
@@ -10,15 +10,19 @@ export default async function makeDb() {
       useUnifiedTopology: true
     }))
   db = db || (await connection.db(global.__MONGO_DB_NAME__))
+  db.makeId = function (id) {
+    return ObjectId(id)
+  }
   return db
 }
 
 export async function closeDb() {
   await connection.close()
-  await db.close()
+  // await db.close()
 }
 
 export async function clearDb() {
+  const db = await makeDb()
   await db.collection('users').deleteMany()
   return true
 }

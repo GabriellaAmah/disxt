@@ -19,7 +19,11 @@ class MemoryDatabaseServer {
   }
 
   getConnectionString() {
-    return this.mongod.getConnectionString()
+    return this.mongod.getUri(true)
+  }
+
+  getDb() {
+    return this.mongod.getDbName()
   }
 }
 

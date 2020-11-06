@@ -17,14 +17,14 @@ export default function makeFakeUser(override) {
     role: 'admin',
     _id: Id.makeId()
   }
-  const { _id, role } = user
-  const token = jwt.sign({ _id, role }, process.env.JWT_SECRET, {
-    expiresIn: '2d'
-  })
+  // const { _id, role } = user
+  // const token = jwt.sign({ _id, role }, process.env.JWT_SECRET, {
+  //   expiresIn: '2d'
+  // })
 
   return {
     ...user,
-    ...override,
-    token
+    ...override
+    // token
   }
 }

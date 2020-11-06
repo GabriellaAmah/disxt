@@ -16,8 +16,7 @@ const makeAddUser = ({ usersDb }) => {
       name: user.getName(),
       lastName: user.getLastName(),
       age: user.getAge(),
-      role: user.getRole(),
-      _id: user.getId()
+      role: user.getRole()
     })
   }
 }

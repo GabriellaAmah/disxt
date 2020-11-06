@@ -3,21 +3,26 @@ services:
   api:
     build: .
     image: api
+    working_dir: /usr/src/app
     expose:
       - 4000
+    ports:
+      - '4000:4000'
     depends_on:
       - mongo
   mongo:
     container_name: mongo
-    env_file: .env
+    env_file:
+      - .env
     environment:
       - DB_URL_LOCAL=$DB_URL_LOCAL
+      - JWT_SECRET=$JWT_SECRET
       - NODE_ENV=development
     image: mongo
-    expose:
-      - 27017
-    ports:
-      - 27017:27017
     volumes:
       - './data:/data/db'
+    ports:
+      - 27017:27017
     restart: always
+volumes:
+  nodemodules:
