@@ -15,8 +15,6 @@ services:
     environment:
       - DB_URL_LOCAL=$DB_URL_LOCAL
       - JWT_SECRET=$JWT_SECRET
-    links:
-      - redis
   mongo:
     container_name: mongo
     image: mongo
