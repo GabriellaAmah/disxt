@@ -27,7 +27,7 @@ The `login` route generates a `token` which can be used as the `x-auth-token` he
 
 Method - `GET`
 \
-Route - `http://localhost:4000/api/auth`
+Route - `http://localhost:4000/api/v1/auth`
 
 # User Route
 
@@ -66,7 +66,7 @@ The following properties are required.
 
 Method - `GET`
 \
-Route - `http://localhost:4000/api/v1/product/`
+Route - `http://localhost:4000/api/v1/products`
 \
 header - `x-auth-token`
 \
@@ -76,7 +76,7 @@ This returns all products in the database
 
 Method - `GET`
 \
-Route - `http://localhost:4000/api/v1/product/:id`
+Route - `http://localhost:4000/api/v1/products/:id`
 \
 header - `x-auth-token`
 \
@@ -86,7 +86,7 @@ Where `id` is the id of the respective product
 
 Method - `PATCH`
 \
-Route - `http://localhost:4000/api/v1/product/:id`
+Route - `http://localhost:4000/api/v1/products/:id`
 \
 header - `x-auth-token`
 \
@@ -96,7 +96,7 @@ Where `id` is the id of the respective product
 
 Method - `DELETE`
 \
-Route - `http://localhost:4000/api/v1/product/:id`
+Route - `http://localhost:4000/api/v1/products/:id`
 \
 header - `x-auth-token`
 \
