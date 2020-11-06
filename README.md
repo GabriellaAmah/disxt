@@ -37,7 +37,6 @@ Method - `POST`
 Route - `http://localhost:4000/api/v1/users`
 \
 To create a user, the following attributes are needed.
-\
 
 - username
 - password - 8 characters long and must include one uppercase character, a number and a special symbol.
@@ -56,7 +55,6 @@ Method - `POST`
 Route - `http://localhost:4000/api/v1/products`
 \
 header - `x-auth-token`
-\
 
 The following properties are required.
 
