@@ -10,14 +10,13 @@ services:
       - '4000:4000'
     depends_on:
       - mongo
-  mongo:
-    container_name: mongo
     env_file:
       - .env
     environment:
       - DB_URL_LOCAL=$DB_URL_LOCAL
       - JWT_SECRET=$JWT_SECRET
-      - NODE_ENV=development
+  mongo:
+    container_name: mongo
     image: mongo
     volumes:
       - './data:/data/db'

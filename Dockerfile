@@ -9,8 +9,7 @@ RUN npm install
 COPY ./src ./src
 RUN npm run build
 RUN npm prune --production
-ENV DB_URL_LOCAL=mongodb://mongo:27017/disxt
-ENV JWT_SECRET=SomerandomSecret
+
 
 FROM base AS release
 
