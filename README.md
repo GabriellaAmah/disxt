@@ -14,7 +14,7 @@ Simply run `docker-compose up --build`.
 
 METHOD - `POST`
 \
-Route - `http://localhost:4000/api/auth`
+Route - `http://localhost:4000/api/v1/auth`
 \
 The following properties are needed
 
