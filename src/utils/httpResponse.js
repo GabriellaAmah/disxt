@@ -26,7 +26,6 @@ export const apiResponse = ({
   ...props
 }) => {
   const toReturn = {
-    status,
     message,
     data,
     ...props
@@ -36,6 +35,7 @@ export const apiResponse = ({
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
+    status,
     statusCode,
     data: JSON.stringify(toReturn)
   }

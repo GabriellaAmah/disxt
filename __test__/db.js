@@ -18,12 +18,12 @@ export default async function makeDb() {
 
 export async function closeDb() {
   await connection.close()
-  // await db.close()
 }
 
 export async function clearDb() {
   const db = await makeDb()
   await db.collection('users').deleteMany()
+  await db.collection('products').deleteMany()
   return true
 }
 

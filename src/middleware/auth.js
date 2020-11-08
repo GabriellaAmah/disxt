@@ -12,9 +12,6 @@ export const decodeToken = (controller) => {
       throw new UnauthorizedError('No token, authorization denied.')
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    if (!decoded) {
-      throw new InvalidPropertyError('No User with this token exists.')
-    }
     httpRequest.user = decoded
     return controller(httpRequest)
   })
