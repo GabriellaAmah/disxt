@@ -19,9 +19,8 @@ export const decodeToken = (controller) => {
 
 export function roleCheck(controller) {
   return wrapAsync(async (httpRequest) => {
-    const token = httpRequest.headers['x-auth-token']
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    if (decoded.role !== 'admin') {
+    const { role } = httpRequest.user
+    if (role !== 'admin') {
       throw new UnauthorizedError(
         'You do not have the authorization to perform this action'
       )
